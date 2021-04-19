@@ -1,0 +1,36 @@
+---
+title: "maftools-learning"
+author: "Wang Depin"
+date: "2021/4/19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(maftools)
+rt = read.maf(maf = "C:\\Users\\79211\\Downloads\\Compressed\\gdc_download_20210412_052559.816517\\2a8f2c83-8b5e-4987-8dbf-01f7ee24dc26\\TCGA.KIRC.mutect.2a8f2c83-8b5e-4987-8dbf-01f7ee24dc26.DR-10.0.somatic.maf\\TCGA.KIRC.mutect.2a8f2c83-8b5e-4987-8dbf-01f7ee24dc26.DR-10.0.somatic.maf")
+
+#### Plotting MAF summary.
+plotmafSummary(maf = rt, rmOutlier = TRUE, addStat = 'median', dashboard = TRUE, titvRaw = FALSE)
+```
+
+
+
+#### Drawing oncoplots 
+#### Better representation of maf file can be shown as oncoplots, also known as waterfall plots.
+# oncoplot for top ten mutated genes.
+
+```{r cars}
+oncoplot(maf = rt, top = 10)
+```
+
+NOTE: Variants annotated as Multi_Hit are those genes which are mutated more than once in the same sample.
